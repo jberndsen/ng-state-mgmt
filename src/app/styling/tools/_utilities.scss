@@ -1,0 +1,109 @@
+/*  UTILITIES
+    Custom-build scss mixins and functions that need to be accessible
+    globally go here.
+*/
+
+// UTILITY FUNCTIONS (=function($))
+
+@function pow($x, $n)
+{
+    $r: 1;
+    @if $n > 0
+    {
+        @for $i from 1 through $n
+        {
+            $r: $r * $x;
+        }
+    }
+    @else if $n < 0
+    {
+        @for $i from $n to 0
+        {
+            $r: $r / $x;
+        }
+    }
+    @return $r;
+}
+
+@function brightness($color)
+{
+    $sum: red($color) + green($color) + blue($color);
+    @return percentage($sum / (255*3));
+}
+
+// UTILITY MIXINS (@include mixin($))
+
+// for vendor
+@mixin box-shadow($shadow...)
+{
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+    -o-box-shadow: $shadow;
+}
+
+@mixin border-radius($radius)
+{
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-sizing($box-model)
+{
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+// background-gradient(colour, colour, left|right)
+@mixin fade-gradient($start, $start-colour, $mid-colour, $end-colour)
+{
+    background-image: -webkit-linear-gradient($start, $start-colour 0%, $mid-colour 50%, $end-colour 100%);
+    background-image:    -moz-linear-gradient($start, $start-colour 0%, $mid-colour 50%, $end-colour 100%);
+    background-image:     -ms-linear-gradient($start, $start-colour 0%, $mid-colour 50%, $end-colour 100%);
+    background-image:      -o-linear-gradient($start, $start-colour 0%, $mid-colour 50%, $end-colour 100%);
+    background-image:         linear-gradient($start, $start-colour 0%, $mid-colour 50%, $end-colour 100%);
+}
+
+// truncation of overflow text
+// mixin must be explicitly included in elements containing the text:
+// <div><h5>Sometext</h5></div> <-- mixin must be applied to h5, not div!
+// (since it should be an explicit choice
+// to use this method for low-resolution responsiveness)
+@mixin text-truncate
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// convert square element to circle (e.g. for profile pics & icons)
+@mixin circle
+{
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    background-clip: padding-box;
+}
+
+// for locking selection, and disabling text cursor in certain text.
+// test first to see if it gives any usability issues or annoyances.
+@mixin unselectable
+{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+// for transform (mainly used in icon glyph placement)
+@mixin transform($transform)
+{
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+    transform: $transform;
+}

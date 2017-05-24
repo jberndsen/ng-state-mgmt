@@ -1,0 +1,7 @@
+@import '~@angular/material/theming';
+@import './theme';
+
+// For styling your custom components using the general theme colours,
+// look at https://github.com/angular/material2/blob/master/guides/theming-your-components.md
+$primary-color: mat-color(map-get($app-theme, primary));
+$accent-color: mat-color(map-get($app-theme, accent));

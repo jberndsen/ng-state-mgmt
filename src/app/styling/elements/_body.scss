@@ -1,0 +1,13 @@
+@import '../settings/_colours.scss';
+@import '../settings/_typography.scss';
+
+body {
+  background-color: mat-color($app-ui, 50);
+  margin: 0;
+
+  font-family: $font-stack;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  color: black;
+}

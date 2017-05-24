@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Generic
+@import "~normalize.css/normalize.css";
+@import "generic/theme";
+
+// Elements
+@import "elements/star";
+@import "elements/body";
+@import "elements/_md-dialog.scss";
+
+// Objects

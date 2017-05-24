@@ -1,0 +1,21 @@
+@import '../../styling/imports';
+
+.login {
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+
+  & > md-card {
+    width: 350px;
+  }
+
+  &__form {
+    @include flexbox;
+    @include flex-direction(column);
+  }
+
+  &__error {
+    padding-top: 15px;
+    color: mat-color(map-get($app-theme, warn));
+  }
+}

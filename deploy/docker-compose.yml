@@ -1,0 +1,30 @@
+version: "3"
+services:
+  demo:
+    image: REPOSITORY/frontend/IMAGE:TAG
+    ports:
+      - "80:4200"
+    environment:
+      INTERNAL_APP_PORT: "4200"
+      URL_AUTHORIZATION: "http://authserver.com/token"
+      URL_API_BASE: "http://resourceserver.com/api"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: "0"
+    networks:
+      - web
+  visualizer:
+      image: dockersamples/visualizer:stable
+      ports:
+        - "8080:8080"
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+      deploy:
+        placement:
+          constraints: [node.role == manager]
+      networks:
+        - web
+networks:
+  web:

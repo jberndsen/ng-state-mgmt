@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+// define our theme colours
+$app-primary: mat-palette($mat-grey);
+$app-accent: mat-palette($mat-blue);
+$app-ui: mat-palette($mat-grey);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent);
+

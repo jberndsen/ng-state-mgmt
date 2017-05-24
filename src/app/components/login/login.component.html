@@ -1,0 +1,21 @@
+<div class="login">
+  <md-card>
+    <md-card-header>
+      <md-card-title>Log in...</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <form [formGroup]="loginForm" class="login__form">
+        <md-input-container>
+          <input mdInput formControlName="username" placeholder="Username">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput formControlName="password" placeholder="Password" type="password">
+        </md-input-container>
+      </form>
+      <div class="login__error" *ngIf="displayFailure">You have entered invalid credentials.</div>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button [color]="'accent'" (click)="login()">login</button>
+    </md-card-actions>
+  </md-card>
+</div>

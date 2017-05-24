@@ -1,0 +1,12 @@
+{
+  "/api/token": {
+    "target": "http://authserver.com/token",
+    "secure": false,
+    "pathRewrite": {"^/api/token" : ""},
+    "logLevel":"debug"
+  },
+  "/api": {
+    "target": "http://resourceserver.com/",
+    "logLevel": "debug"
+  }
+}
